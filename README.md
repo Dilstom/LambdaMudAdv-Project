@@ -100,7 +100,7 @@ Request comment:
 - [ ] Header comments in all source files that describe overall what the file does
 - [ ] Header comments on all functions that describe what the function does, function arguments, and return values
 ```
-https://trello.com/b/Xy46GMNg/lambdamud-dil-somb
+
 ---
 
 **Once you have completed the Minimum Viable Product requirements,
@@ -148,7 +148,6 @@ MVP as soon as you can and get working the list of features.
 * Add your secret credentials
   * Create `.env` in the root directory of your project
   * Add your pusher credentials and secret key
-  * 'python manage.py shell'
     ```
     SECRET_KEY='<your_secret_key>'
     DEBUG=True
@@ -172,6 +171,9 @@ MVP as soon as you can and get working the list of features.
 
 
 ## Test API commands
+
+* Windows users might want to use Postman to test API commands
+
 ### Registration
 * `curl -X POST -H "Content-Type: application/json" -d '{"username":"testuser", "password1":"testpassword", "password2":"testpassword"}' localhost:8000/api/registration/`
 * Response:
@@ -222,6 +224,15 @@ MVP as soon as you can and get working the list of features.
     * Handle valid API responses and update the display accordingly
 
 ## Troubleshooting
+
+### Heroku errors with `config`
+```
+File "/app/adventure/api.py", line 12, in <module>
+    pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
+```
+
+If you run into errors with config on Heroku, make sure you have set your config variables. Remember, `.env` should NOT be committed to GitHub or Heroku.
+
 
 ### Nondescript `500` error
 * [JavaScript] If this is an axios call, you can get more information by
